@@ -5,13 +5,11 @@ import java.util.List;
 public class ShoppingCart {
     private Long id;
     private List<Product> products;
-    private Long orderId;
     private User user;
 
     public ShoppingCart(List<Product> items, Long orderId, User user) {
         this.id = id;
         this.products = items;
-        this.orderId = orderId;
         this.user = user;
     }
 
@@ -29,14 +27,6 @@ public class ShoppingCart {
 
     public void setItems(List<Product> items) {
         this.products = items;
-    }
-
-    public Long getOrderId() {
-        return orderId;
-    }
-
-    public void setOrderId(Long orderId) {
-        this.orderId = orderId;
     }
 
     public User getUser() {
