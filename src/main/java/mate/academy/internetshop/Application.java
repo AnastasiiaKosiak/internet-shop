@@ -25,8 +25,8 @@ public class Application {
 
         final UserService userService = (UserService)injector.getInstance(UserService.class);
 
-        final ShoppingCartService shoppingCartService = (ShoppingCartService)
-                injector.getInstance(ShoppingCartService.class);
+        final ShoppingCartService shoppingCartService =
+                (ShoppingCartService)injector.getInstance(ShoppingCartService.class);
 
         Product product1 = new Product("Little Prince", new BigDecimal(12.00));
         Product product2 = new Product("The Book thief", new BigDecimal(21.00));
@@ -42,7 +42,7 @@ public class Application {
 
         userService.create(user1);
         userService.create(user2);
-        userService.getAll().stream().forEach(System.out::println);
+        userService.getAll().forEach(System.out::println);
 
         ShoppingCart shoppingCart = new ShoppingCart(new ArrayList<>(), user1);
         shoppingCartService.addProduct(shoppingCart, product1);
@@ -50,6 +50,6 @@ public class Application {
 
         Order order1 = new Order(shoppingCart.getProducts(), user1);
         orderService.completeOrder(order1.getProducts(), user1);
-        orderService.getUserOrders(user1).stream().forEach(System.out::println);
+        orderService.getUserOrders(user1).forEach(System.out::println);
     }
 }

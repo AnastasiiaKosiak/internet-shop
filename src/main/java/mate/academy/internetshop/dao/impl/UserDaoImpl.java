@@ -32,9 +32,9 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public User update(User user) {
-        IntStream.range(0, Storage.users.size())
-                .filter(indx -> user.getId().equals(Storage.users.get(indx).getId()))
-                .forEach(i -> Storage.users.set(i, user));
+        int index = Storage.users.indexOf(Storage.users.stream()
+                .filter(person -> person.getId().equals(user.getId())));
+        Storage.users.set(index, user);
         return user;
     }
 

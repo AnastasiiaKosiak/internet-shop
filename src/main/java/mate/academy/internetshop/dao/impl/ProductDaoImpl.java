@@ -2,6 +2,7 @@ package mate.academy.internetshop.dao.impl;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import mate.academy.internetshop.dao.ProductDao;
 import mate.academy.internetshop.db.Storage;
@@ -32,9 +33,9 @@ public class ProductDaoImpl implements ProductDao {
 
     @Override
     public Product update(Product item) {
-        IntStream.range(0, Storage.products.size())
-                .filter(indx -> item.getId().equals(Storage.products.get(indx).getId()))
-                .forEach(i -> Storage.products.set(i, item));
+        int index = Storage.orders.indexOf(Storage.products.stream()
+                .filter(product -> product.getId().equals(item.getId())));
+        Storage.products.set(index, item);
         return item;
     }
 
