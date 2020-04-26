@@ -5,14 +5,7 @@ import java.util.Optional;
 import mate.academy.internetshop.model.Product;
 import mate.academy.internetshop.model.ShoppingCart;
 
-public interface ShoppingCartDao {
-
-    ShoppingCart create(ShoppingCart shoppingCart);
-
-    ShoppingCart update(ShoppingCart shoppingCart);
-
-    Optional<ShoppingCart> getByUserId(Long userId);
+public interface ShoppingCartDao extends GenericDao<ShoppingCart, Long>{
 
     List<Product> getAllProducts(ShoppingCart shoppingCart);
-
 }

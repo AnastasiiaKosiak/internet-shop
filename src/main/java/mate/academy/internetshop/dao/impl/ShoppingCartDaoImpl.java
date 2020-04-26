@@ -26,11 +26,26 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
     }
 
     @Override
-    public Optional<ShoppingCart> getByUserId(Long userId) {
+    public boolean deleteById(Long id) {
+        return Storage.carts.removeIf(cart -> cart.getId().equals(id));
+    }
+
+    @Override
+    public boolean delete(ShoppingCart shoppingCart) {
+        return Storage.carts.remove(shoppingCart);
+    }
+
+    @Override
+    public Optional<ShoppingCart> get(Long userId) {
         return Storage.carts
                 .stream()
                 .filter(cart -> cart.getUser().getId().equals(userId))
                 .findFirst();
+    }
+
+    @Override
+    public List<ShoppingCart> getAll() {
+        return Storage.carts;
     }
 
     @Override
