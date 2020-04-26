@@ -35,7 +35,7 @@ public class Application {
         itemService.create(product1);
         itemService.create(product2);
         itemService.create(product3);
-        itemService.getAll().stream().forEach(System.out::println);
+        itemService.getAll().forEach(System.out::println);
 
         User user1 = new User("nastya", "abc", "123");
         User user2 = new User("ivan", "xyz", "456");
