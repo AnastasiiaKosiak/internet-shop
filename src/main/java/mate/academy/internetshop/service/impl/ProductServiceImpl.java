@@ -1,6 +1,7 @@
 package mate.academy.internetshop.service.impl;
 
 import java.util.List;
+import java.util.Optional;
 import mate.academy.internetshop.dao.ProductDao;
 import mate.academy.internetshop.lib.Inject;
 import mate.academy.internetshop.lib.Service;
@@ -18,8 +19,8 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product get(Long id) {
-        return productDao.get(id).get();
+    public Optional<Product> get(Long id) {
+        return productDao.get(id);
     }
 
     @Override
@@ -33,13 +34,13 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public void delete(Long id) {
-        productDao.deleteById(id);
+    public boolean delete(Long id) {
+        return productDao.deleteById(id);
     }
 
     @Override
-    public void delete(Product product) {
-        productDao.delete(product);
+    public boolean delete(Product product) {
+        return productDao.delete(product);
     }
 }
 

@@ -1,9 +1,9 @@
-package mate.academy.internetshop.dao;
+package mate.academy.internetshop.service;
 
 import java.util.List;
 import java.util.Optional;
 
-public interface GenericDao<T, K> {
+public interface GenericService<T, K> {
 
     T create(T element);
 
@@ -13,7 +13,5 @@ public interface GenericDao<T, K> {
 
     T update(T element);
 
-    boolean deleteById(K id);
-
-    boolean delete(T element);
+    boolean delete(K id);
 }
