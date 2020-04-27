@@ -16,15 +16,11 @@ public class Application {
     private static Injector injector = Injector.getInstance("mate.academy.internetshop");
 
     public static void main(String[] args) {
-
         final ProductService itemService =
                 (ProductService)injector.getInstance(ProductService.class);
-
         final OrderService orderService =
                 (OrderService)injector.getInstance(OrderService.class);
-
         final UserService userService = (UserService)injector.getInstance(UserService.class);
-
         final ShoppingCartService shoppingCartService =
                 (ShoppingCartService)injector.getInstance(ShoppingCartService.class);
 
@@ -35,7 +31,7 @@ public class Application {
         itemService.create(product1);
         itemService.create(product2);
         itemService.create(product3);
-        itemService.getAll().stream().forEach(System.out::println);
+        itemService.getAll().forEach(System.out::println);
 
         User user1 = new User("nastya", "abc", "123");
         User user2 = new User("ivan", "xyz", "456");
