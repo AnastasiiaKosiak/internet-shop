@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Optional;
 
 public interface GenericService<T, K> {
-
     T create(T element);
 
     Optional<T> get(K id);
@@ -13,5 +12,5 @@ public interface GenericService<T, K> {
 
     T update(T element);
 
-    boolean delete(K id);
+    boolean delete(T element);
 }

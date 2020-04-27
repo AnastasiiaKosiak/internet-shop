@@ -8,7 +8,6 @@ import mate.academy.internetshop.model.ShoppingCart;
 import mate.academy.internetshop.model.User;
 
 public class Storage {
-
     public static final List<Product> products = new ArrayList<>();
     public static final List<ShoppingCart> carts = new ArrayList<>();
     public static final List<Order> orders = new ArrayList<>();

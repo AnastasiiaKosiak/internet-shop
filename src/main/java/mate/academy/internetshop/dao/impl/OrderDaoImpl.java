@@ -9,7 +9,6 @@ import mate.academy.internetshop.model.Order;
 
 @Dao
 public class OrderDaoImpl implements OrderDao {
-
     @Override
     public Order create(Order order) {
         Storage.addOrder(order);
@@ -35,11 +34,6 @@ public class OrderDaoImpl implements OrderDao {
                 .filter(o -> o.getId().equals(order.getId())));
         Storage.orders.set(index, order);
         return order;
-    }
-
-    @Override
-    public boolean deleteById(Long id) {
-        return Storage.orders.removeIf(order -> order.getId().equals(id));
     }
 
     @Override

@@ -9,7 +9,6 @@ import mate.academy.internetshop.model.User;
 
 @Dao
 public class UserDaoImpl implements UserDao {
-
     @Override
     public User create(User user) {
         Storage.addUser(user);
@@ -35,11 +34,6 @@ public class UserDaoImpl implements UserDao {
                 .filter(person -> person.getId().equals(user.getId())));
         Storage.users.set(index, user);
         return user;
-    }
-
-    @Override
-    public boolean deleteById(Long id) {
-        return Storage.users.removeIf(user -> user.getId().equals(id));
     }
 
     @Override

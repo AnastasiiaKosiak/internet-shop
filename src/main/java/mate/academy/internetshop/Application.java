@@ -16,15 +16,11 @@ public class Application {
     private static Injector injector = Injector.getInstance("mate.academy.internetshop");
 
     public static void main(String[] args) {
-
         final ProductService itemService =
                 (ProductService)injector.getInstance(ProductService.class);
-
         final OrderService orderService =
                 (OrderService)injector.getInstance(OrderService.class);
-
         final UserService userService = (UserService)injector.getInstance(UserService.class);
-
         final ShoppingCartService shoppingCartService =
                 (ShoppingCartService)injector.getInstance(ShoppingCartService.class);
 
