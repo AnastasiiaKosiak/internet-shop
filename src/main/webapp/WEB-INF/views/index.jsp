@@ -8,7 +8,7 @@
 <a href="${pageContext.request.contextPath}/injectData">Inject test data into the DB</a>
 <br> <a href="${pageContext.request.contextPath}/registration">Register</a>
 <br> <a href="${pageContext.request.contextPath}/users/all">See registered users</a>
-<br> <a href="${pageContext.request.contextPath}/addProducts">Add products</a>
+<br> <a href="${pageContext.request.contextPath}/addProduct">Add product</a>
 <br> <a href="${pageContext.request.contextPath}/products/all">See all products</a>
 </body>
 </html>

@@ -10,15 +10,15 @@ import mate.academy.internetshop.lib.Injector;
 import mate.academy.internetshop.model.Product;
 import mate.academy.internetshop.service.ProductService;
 
-public class AddProductsController extends HttpServlet {
-    private static final Injector injector = Injector.getInstance("mate.academy.internetshop");
+public class AddProductController extends HttpServlet {
+    private static final Injector INJECTOR = Injector.getInstance("mate.academy.internetshop");
     private final ProductService productService =
-            (ProductService)injector.getInstance(ProductService.class);
+            (ProductService)INJECTOR.getInstance(ProductService.class);
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        req.getRequestDispatcher("/WEB-INF/views/addProducts.jsp").forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/views/addProduct.jsp").forward(req, resp);
     }
 
     @Override

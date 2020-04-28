@@ -15,7 +15,7 @@
 
     <servlet>
         <servlet-name>allUsers</servlet-name>
-        <servlet-class>mate.academy.internetshop.controllers.UsersController</servlet-class>
+        <servlet-class>mate.academy.internetshop.controllers.GetAllUsersController</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -53,18 +53,18 @@
         <url-pattern>/injectData</url-pattern>
     </servlet-mapping>
     <servlet>
-        <servlet-name>addProducts</servlet-name>
-        <servlet-class>mate.academy.internetshop.controllers.AddProductsController</servlet-class>
+        <servlet-name>addProduct</servlet-name>
+        <servlet-class>mate.academy.internetshop.controllers.AddProductController</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>addProducts</servlet-name>
-        <url-pattern>/addProducts</url-pattern>
+        <servlet-name>addProduct</servlet-name>
+        <url-pattern>/addProduct</url-pattern>
     </servlet-mapping>
 
     <servlet>
         <servlet-name>allProducts</servlet-name>
-        <servlet-class>mate.academy.internetshop.controllers.ProductsController</servlet-class>
+        <servlet-class>mate.academy.internetshop.controllers.GetAllProductsController</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -74,7 +74,9 @@
 
     <servlet>
         <servlet-name>addToCart</servlet-name>
-        <servlet-class>mate.academy.internetshop.controllers.AddToCartController</servlet-class>
+        <servlet-class>
+            mate.academy.internetshop.controllers.AddProductToShoppingCartController
+        </servlet-class>
     </servlet>
 
     <servlet-mapping>
