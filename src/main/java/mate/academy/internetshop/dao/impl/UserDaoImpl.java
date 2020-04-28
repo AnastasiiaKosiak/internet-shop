@@ -19,7 +19,7 @@ public class UserDaoImpl implements UserDao {
     public Optional<User> get(Long id) {
         return Storage.users
                 .stream()
-                .filter(user -> user.getId().equals(id))
+                .filter(user -> user.getUserId().equals(id))
                 .findFirst();
     }
 
@@ -31,7 +31,7 @@ public class UserDaoImpl implements UserDao {
     @Override
     public User update(User user) {
         int index = Storage.users.indexOf(Storage.users.stream()
-                .filter(person -> person.getId().equals(user.getId())));
+                .filter(person -> person.getUserId().equals(user.getUserId())));
         Storage.users.set(index, user);
         return user;
     }

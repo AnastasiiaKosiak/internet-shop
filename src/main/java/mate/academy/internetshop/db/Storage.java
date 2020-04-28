@@ -31,7 +31,7 @@ public class Storage {
 
     public static void addUser(User user) {
         userId++;
-        user.setId(userId);
+        user.setUserId(userId);
         users.add(user);
     }
 

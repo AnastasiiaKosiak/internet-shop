@@ -37,4 +37,11 @@ public class UserServiceImpl implements UserService {
     public boolean delete(User user) {
         return userDao.delete(user);
     }
+
+    @Override
+    public User delete(Long id) {
+        User user = get(id).get();
+        userDao.delete(user);
+        return user;
+    }
 }

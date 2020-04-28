@@ -33,7 +33,7 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
     public Optional<ShoppingCart> get(Long userId) {
         return Storage.carts
                 .stream()
-                .filter(cart -> cart.getUser().getId().equals(userId))
+                .filter(cart -> cart.getUser().getUserId().equals(userId))
                 .findFirst();
     }
 
