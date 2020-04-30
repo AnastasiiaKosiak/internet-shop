@@ -118,7 +118,7 @@
 
     <servlet>
         <servlet-name>createOrder</servlet-name>
-        <servlet-class>mate.academy.internetshop.controllers.CreateOrderController</servlet-class>
+        <servlet-class>mate.academy.internetshop.controllers.CompleteOrderController</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -158,7 +158,9 @@
 
     <servlet>
         <servlet-name>allProductsForAdmin</servlet-name>
-        <servlet-class>mate.academy.internetshop.controllers.GetAllProductsAdminController</servlet-class>
+        <servlet-class>
+            mate.academy.internetshop.controllers.GetAllProductsForAdminController
+        </servlet-class>
     </servlet>
 
     <servlet-mapping>
