@@ -2,10 +2,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Users</title>
 </head>
 <body>
-<h1>All users page</h1>
+<h1>All users</h1>
 <table border="1">
     <tr>
     <th>ID</th>

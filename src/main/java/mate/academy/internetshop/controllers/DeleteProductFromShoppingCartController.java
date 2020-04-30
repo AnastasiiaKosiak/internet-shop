@@ -1,33 +1,28 @@
 package mate.academy.internetshop.controllers;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import mate.academy.internetshop.lib.Injector;
-import mate.academy.internetshop.model.Product;
 import mate.academy.internetshop.service.ProductService;
+import mate.academy.internetshop.service.ShoppingCartService;
 
-public class AddProductController extends HttpServlet {
+public class DeleteProductFromShoppingCartController extends HttpServlet {
+    private static final Long USER_ID = 1L;
     private static final Injector INJECTOR = Injector.getInstance("mate.academy.internetshop");
+    private final ShoppingCartService shoppingCartService =
+            (ShoppingCartService)INJECTOR.getInstance(ShoppingCartService.class);
     private final ProductService productService =
             (ProductService)INJECTOR.getInstance(ProductService.class);
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        req.getRequestDispatcher("/WEB-INF/views/addProduct.jsp").forward(req, resp);
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp)
-            throws ServletException, IOException {
-        String productName = req.getParameter("name");
-        String price = req.getParameter("price");
-        Product product = new Product(productName, BigDecimal.valueOf(Double.parseDouble(price)));
-        productService.create(product);
-        resp.sendRedirect(req.getContextPath() + "/products/admin");
+        String productId = req.getParameter("id");
+        shoppingCartService.deleteProduct(shoppingCartService.get(USER_ID).get(),
+                productService.get(Long.valueOf(productId)).get());
+        resp.sendRedirect(req.getContextPath() + "/cart/all");
     }
 }

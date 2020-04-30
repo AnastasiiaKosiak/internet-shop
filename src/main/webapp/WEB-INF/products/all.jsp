@@ -5,6 +5,7 @@
 <title>Products</title>
 </head>
 <body>
+<h1>All products</h1>
     <table border="1">
      <tr>
          <th>ID</th>
