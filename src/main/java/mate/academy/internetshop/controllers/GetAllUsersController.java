@@ -11,6 +11,7 @@ import mate.academy.internetshop.model.User;
 import mate.academy.internetshop.service.UserService;
 
 public class GetAllUsersController extends HttpServlet {
+    private static final String USER_ID = "user_id";
     private static final Injector INJECTOR = Injector.getInstance("mate.academy.internetshop");
     private final UserService userService = (UserService)INJECTOR.getInstance(UserService.class);
 
