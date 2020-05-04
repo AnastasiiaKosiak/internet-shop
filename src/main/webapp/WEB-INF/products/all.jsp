@@ -29,7 +29,7 @@
                     <a href="${pageContext.request.contextPath}/products/delete?id=${product.id}">Delete</a>
                 </td>
                 <td>
-                    <a href="${pageContext.request.contextPath}/products/add?id=${product.id}">Add to cart</a>
+                    <a href="${pageContext.request.contextPath}/cart/add?id=${product.id}">Add to cart</a>
                 </td>
             </tr>
         </c:forEach>

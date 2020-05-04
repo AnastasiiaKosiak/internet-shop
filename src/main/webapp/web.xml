@@ -81,7 +81,7 @@
 
     <servlet-mapping>
         <servlet-name>addToCart</servlet-name>
-        <url-pattern>/products/add</url-pattern>
+        <url-pattern>/cart/add</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -123,7 +123,7 @@
 
     <servlet-mapping>
         <servlet-name>createOrder</servlet-name>
-        <url-pattern>/createOrder</url-pattern>
+        <url-pattern>/order/create</url-pattern>
     </servlet-mapping>
 
     <servlet>

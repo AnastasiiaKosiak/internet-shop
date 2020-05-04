@@ -2,13 +2,25 @@
 <html>
 <head>
     <title>Add a product</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
 </head>
 <body>
 <h1>Add a product</h1>
 <form method="post" action="${pageContext.request.contextPath}/addProduct">
-    Please enter product name:<input type="text" name="name" required>
-    <br>Please enter price:<input type="text" name="price" required>
-    <br><button type="submit">Add</button>
+    <div class="container">
+        <div class="form-group">
+            <label>Product name</label>
+            <input type="text" class="form-control" name="name" required>
+        </div>
+        <div class="form-group">
+            <label>Price</label>
+            <input type="text" class="form-control" name="price" required>
+        </div>
+        <button type="submit">Add</button>
+    </div>
 </form>
 </body>
 </html>

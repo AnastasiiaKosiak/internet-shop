@@ -30,6 +30,6 @@
         </tr>
     </c:forEach>
 </table>
-<a href="${pageContext.request.contextPath}/createOrder">Create order</a>
+<a href="${pageContext.request.contextPath}/order/create">Create order</a>
 </body>
 </html>
