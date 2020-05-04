@@ -3,33 +3,40 @@
 <html>
 <head>
     <title>All orders</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
 </head>
 <body>
-<h1>Orders</h1>
-<table border="1">
-    <tr>
-        <th>ID</th>
-        <th>User</th>
-        <th>Details</th>
-        <th>Delete</th>
-    </tr>
-    <c:forEach var="order" items="${orders}">
+<div class="container">
+    <h1>All products page</h1>
+    <p> <a class="btn btn-outline-success" href="${pageContext.request.contextPath}/">Main page</a> </p>
+    <table class="table">
+        <thead>
         <tr>
-            <td>
-                <c:out value="${order.id}"/>
-            </td>
-            <td>
-                <c:out value="${order.user.name}"/>
-            </td>
-            <td>
-                <a href="${pageContext.request.contextPath}/order/info?id=${order.id}">Details</a>
-            </td>
-            <td>
-                <a href="${pageContext.request.contextPath}/order/delete?id=${order.id}">Delete</a>
-            </td>
+            <th>ID</th>
+            <th>User</th>
+            <th>Details</th>
+            <th>Delete</th>
         </tr>
-    </c:forEach>
-</table>
+        </thead>
+        <tbody>
+        <c:forEach var="order" items="${orders}">
+            <tr>
+                <td><c:out value="${order.id}"/></td>
+                <td><c:out value="${order.user.name}"/></td>
+                <td>
+                    <a href="${pageContext.request.contextPath}/order/info?id=${order.id}">Details</a>
+                </td>
+                <td>
+                    <a href="${pageContext.request.contextPath}/order/delete?id=${order.id}">Delete</a>
+                </td>
+            </tr>
+        </c:forEach>
+        </tbody>
+    </table>
+</div>
 </body>
 </html>
 
