@@ -8,7 +8,7 @@
           crossorigin="anonymous">
 </head>
 <body>
-<h1>Add a product</h1>
+<h1 >Add a product</h1>
 <form method="post" action="${pageContext.request.contextPath}/addProduct">
     <div class="container">
         <div class="form-group">
@@ -19,7 +19,7 @@
             <label>Price</label>
             <input type="text" class="form-control" name="price" required>
         </div>
-        <button type="submit">Add</button>
+        <button class="btn btn-outline-success" type="submit">Add</button>
     </div>
 </form>
 </body>
