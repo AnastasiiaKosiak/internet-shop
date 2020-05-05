@@ -27,6 +27,8 @@
            role="button">See all products in a cart</a> </p>
     <p> <a class="btn btn-outline-success" href="${pageContext.request.contextPath}/order/all"
            role="button">See all orders</a> </p>
+    <p> <a class="btn btn-outline-success" href="${pageContext.request.contextPath}/logout"
+           role="button">Logout</a> </p>
 </div>
 </body>
 </html>

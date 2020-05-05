@@ -40,7 +40,7 @@ public class Application {
         userService.create(user2);
         userService.getAll().forEach(System.out::println);
 
-        ShoppingCart shoppingCart = new ShoppingCart(new ArrayList<>(), user1);
+        ShoppingCart shoppingCart = new ShoppingCart(new ArrayList<>(), user1.getUserId());
         shoppingCartService.addProduct(shoppingCart, product1);
         shoppingCartService.addProduct(shoppingCart, product2);
 

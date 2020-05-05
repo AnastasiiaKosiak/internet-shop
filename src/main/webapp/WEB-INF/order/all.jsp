@@ -10,7 +10,7 @@
 </head>
 <body>
 <div class="container">
-    <h1>All products page</h1>
+    <h1>All orders page</h1>
     <p> <a class="btn btn-outline-success" href="${pageContext.request.contextPath}/">Main page</a> </p>
     <table class="table">
         <thead>
