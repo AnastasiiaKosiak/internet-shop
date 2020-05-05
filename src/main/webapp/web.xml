@@ -212,7 +212,7 @@
 
     <servlet>
         <servlet-name>getOrdersForAdmin</servlet-name>
-        <servlet-class>mate.academy.internetshop.controllers.GetAllOrdersForAdmin</servlet-class>
+        <servlet-class>mate.academy.internetshop.controllers.GetAllOrdersForAdminController</servlet-class>
     </servlet>
 
     <servlet-mapping>
