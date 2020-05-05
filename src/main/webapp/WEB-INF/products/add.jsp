@@ -9,7 +9,7 @@
 </head>
 <body>
 <h1 >Add a product</h1>
-<form method="post" action="${pageContext.request.contextPath}/addProduct">
+<form method="post" action="${pageContext.request.contextPath}/products/add">
     <div class="container">
         <div class="form-group">
             <label>Product name</label>

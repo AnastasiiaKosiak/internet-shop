@@ -17,7 +17,7 @@
         role="button">Login</a> </p>
     <p> <a class="btn btn-outline-success" href="${pageContext.request.contextPath}/users/all"
            role="button">All registered users</a> </p>
-    <p> <a class="btn btn-outline-success" href="${pageContext.request.contextPath}/addProduct"
+    <p> <a class="btn btn-outline-success" href="${pageContext.request.contextPath}/products/add"
            role="button">Add a product</a> </p>
     <p> <a class="btn btn-outline-success" href="${pageContext.request.contextPath}/products/all"
         role="button">See all products (for users) </a> </p>

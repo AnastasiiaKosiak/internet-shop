@@ -18,7 +18,6 @@
             <th>ID</th>
             <th>User</th>
             <th>Details</th>
-<%--            <th>Delete</th>--%>
         </tr>
         </thead>
         <tbody>
@@ -29,9 +28,6 @@
                 <td>
                     <a href="${pageContext.request.contextPath}/order/info?id=${order.id}">Details</a>
                 </td>
-<%--                <td>--%>
-<%--                    <a href="${pageContext.request.contextPath}/order/delete?id=${order.id}">Delete</a>--%>
-<%--                </td>--%>
             </tr>
         </c:forEach>
         </tbody>
