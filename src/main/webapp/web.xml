@@ -209,4 +209,14 @@
         <filter-name>authorizationFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
+
+    <servlet>
+        <servlet-name>getOrdersForAdmin</servlet-name>
+        <servlet-class>mate.academy.internetshop.controllers.GetAllOrdersForAdmin</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>getOrdersForAdmin</servlet-name>
+        <url-pattern>/order/admin</url-pattern>
+    </servlet-mapping>
 </web-app>
