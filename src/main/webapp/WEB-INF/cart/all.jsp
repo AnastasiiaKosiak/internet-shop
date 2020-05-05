@@ -3,33 +3,36 @@
 <html>
 <head>
     <title>Products in the shopping cart</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
 </head>
 <body>
-<h1>Products in the cart</h1>
-<table border="1">
-    <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Price</th>
-        <th>Delete</th>
-    </tr>
-    <c:forEach var="product" items="${products}">
+<div class="container">
+    <h1>All product in the cart</h1>
+    <p> <a class="btn btn-outline-success" href="${pageContext.request.contextPath}/">Main page</a> </p>
+    <table class="table">
+        <thead>
         <tr>
-            <td>
-                <c:out value="${product.id}"/>
-            </td>
-            <td>
-                <c:out value="${product.name}"/>
-            </td>
-            <td>
-                <c:out value="${product.price}"/>
-            </td>
-            <td>
-                <a href="${pageContext.request.contextPath}/cart/delete?id=${product.id}">Delete</a>
-            </td>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Delete</th>
         </tr>
-    </c:forEach>
-</table>
-<a href="${pageContext.request.contextPath}/createOrder">Create order</a>
+        </thead>
+        <tbody>
+            <c:forEach var="product" items="${products}">
+                <tr>
+                    <td><c:out value="${product.id}"/></td>
+                    <td><c:out value="${product.name}"/></td>
+                    <td><c:out value="${product.price}"/></td>
+                    <td><a href="${pageContext.request.contextPath}/cart/delete?id=${product.id}">Delete</a></td>
+                </tr>
+            </c:forEach>
+        </tbody>
+    </table>
+    <p> <a class="btn btn-outline-success" href="${pageContext.request.contextPath}/order/create">Create order</a> </p>
+</div>
 </body>
 </html>
