@@ -16,9 +16,11 @@ import mate.academy.internetshop.lib.Injector;
 import mate.academy.internetshop.model.Role;
 import mate.academy.internetshop.model.User;
 import mate.academy.internetshop.service.UserService;
+import org.apache.log4j.Logger;
 
 public class AuthorizationFilter implements Filter {
     private static final String USER_ID = "user_id";
+    private static final Logger LOGGER = Logger.getLogger(AuthorizationFilter.class);
     private static final Injector INJECTOR = Injector.getInstance("mate.academy.internetshop");
     private Map<String, Set<Role.RoleName>> protectedUrls = new HashMap<>();
     private final UserService userService = (UserService)INJECTOR.getInstance(UserService.class);
@@ -49,6 +51,7 @@ public class AuthorizationFilter implements Filter {
         }
         Long userId = (Long)req.getSession().getAttribute(USER_ID);
         if (userId == null) {
+            LOGGER.info("The user with such login or password doesn't exist");
             resp.sendRedirect("/login");
             return;
         }
