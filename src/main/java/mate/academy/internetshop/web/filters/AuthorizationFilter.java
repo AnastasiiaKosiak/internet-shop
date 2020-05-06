@@ -51,7 +51,6 @@ public class AuthorizationFilter implements Filter {
         }
         Long userId = (Long)req.getSession().getAttribute(USER_ID);
         if (userId == null) {
-            LOGGER.info("The user with such login or password doesn't exist");
             resp.sendRedirect("/login");
             return;
         }
@@ -59,6 +58,7 @@ public class AuthorizationFilter implements Filter {
         if (isAuthorized(user, protectedUrls.get(requestedUrl))) {
             filterChain.doFilter(req, resp);
         } else {
+            LOGGER.info("Access to the URL was denied for user with ID=" + userId);
             req.getRequestDispatcher("/WEB-INF/views/accessDenied.jsp").forward(req, resp);
         }
     }
