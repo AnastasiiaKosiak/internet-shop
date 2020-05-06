@@ -34,7 +34,7 @@
     </c:forEach>
     </tbody>
 </table>
-<p> <a class="btn btn-outline-success" href="${pageContext.request.contextPath}/addProduct">Add a product</a> </p>
+<p> <a class="btn btn-outline-success" href="${pageContext.request.contextPath}/products/add">Add a product</a> </p>
 </div>
 </body>
 </html>

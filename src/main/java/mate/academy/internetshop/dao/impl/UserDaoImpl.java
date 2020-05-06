@@ -17,7 +17,7 @@ public class UserDaoImpl implements UserDao {
     @Override
     public User create(User user) {
         Storage.addUser(user);
-        shoppingCartDao.create(new ShoppingCart(new ArrayList<Product>(), user));
+        shoppingCartDao.create(new ShoppingCart(new ArrayList<Product>(), user.getUserId()));
         return user;
     }
 

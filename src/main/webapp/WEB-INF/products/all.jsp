@@ -19,7 +19,6 @@
             <th>ID</th>
             <th>Name</th>
             <th>Price</th>
-            <th>Delete</th>
             <th>Add to cart</th>
         </tr>
         </thead>
@@ -29,9 +28,6 @@
                 <td><c:out value="${product.id}"/></td>
                 <td><c:out value="${product.name}"/></td>
                 <td><c:out value="${product.price}"/></td>
-                <td>
-                    <a href="${pageContext.request.contextPath}/products/delete?id=${product.id}">Delete</a>
-                </td>
                 <td>
                     <a href="${pageContext.request.contextPath}/cart/add?id=${product.id}">Add to cart</a>
                 </td>
