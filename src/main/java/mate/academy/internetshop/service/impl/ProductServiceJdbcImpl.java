@@ -4,16 +4,18 @@ import java.util.List;
 import java.util.Optional;
 import mate.academy.internetshop.dao.ProductDao;
 import mate.academy.internetshop.lib.Inject;
+import mate.academy.internetshop.lib.Service;
 import mate.academy.internetshop.model.Product;
 import mate.academy.internetshop.service.ProductService;
 
-public class ProductServiceImpl implements ProductService {
+@Service
+public class ProductServiceJdbcImpl implements ProductService {
     @Inject
     private ProductDao productDao;
 
     @Override
-    public Product create(Product product) {
-        return productDao.create(product);
+    public Product create(Product element) {
+        return productDao.create(element);
     }
 
     @Override
@@ -27,8 +29,8 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product update(Product product) {
-        return productDao.update(product);
+    public Product update(Product element) {
+        return productDao.update(element);
     }
 
     @Override
