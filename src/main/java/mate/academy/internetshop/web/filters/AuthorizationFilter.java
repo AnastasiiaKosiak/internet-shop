@@ -27,16 +27,16 @@ public class AuthorizationFilter implements Filter {
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-        protectedUrls.put("/users/all", Set.of(Role.RoleName.valueOf("ADMIN")));
-        protectedUrls.put("/products/add", Set.of(Role.RoleName.valueOf("ADMIN")));
-        protectedUrls.put("/products/admin", Set.of(Role.RoleName.valueOf("ADMIN")));
-        protectedUrls.put("/products/delete", Set.of(Role.RoleName.valueOf("ADMIN")));
-        protectedUrls.put("/order/delete", Set.of(Role.RoleName.valueOf("ADMIN")));
-        protectedUrls.put("/order/admin", Set.of(Role.RoleName.valueOf("ADMIN")));
-        protectedUrls.put("/order/create", Set.of(Role.RoleName.valueOf("USER")));
-        protectedUrls.put("/order/all", Set.of(Role.RoleName.valueOf("USER")));
-        protectedUrls.put("/products/all", Set.of(Role.RoleName.valueOf("USER")));
-        protectedUrls.put("/cart/all", Set.of(Role.RoleName.valueOf("USER")));
+        protectedUrls.put("/users/all", Set.of(Role.RoleName.ADMIN));
+        protectedUrls.put("/products/add", Set.of(Role.RoleName.ADMIN));
+        protectedUrls.put("/products/admin", Set.of(Role.RoleName.ADMIN));
+        protectedUrls.put("/products/delete", Set.of(Role.RoleName.ADMIN));
+        protectedUrls.put("/order/delete", Set.of(Role.RoleName.ADMIN));
+        protectedUrls.put("/order/admin", Set.of(Role.RoleName.ADMIN));
+        protectedUrls.put("/order/create", Set.of(Role.RoleName.USER));
+        protectedUrls.put("/order/all", Set.of(Role.RoleName.USER));
+        protectedUrls.put("/products/all", Set.of(Role.RoleName.USER));
+        protectedUrls.put("/cart/all", Set.of(Role.RoleName.USER));
     }
 
     @Override

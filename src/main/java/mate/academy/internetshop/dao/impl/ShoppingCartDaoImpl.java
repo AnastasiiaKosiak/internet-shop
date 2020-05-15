@@ -4,11 +4,9 @@ import java.util.List;
 import java.util.Optional;
 import mate.academy.internetshop.dao.ShoppingCartDao;
 import mate.academy.internetshop.db.Storage;
-import mate.academy.internetshop.lib.Dao;
 import mate.academy.internetshop.model.Product;
 import mate.academy.internetshop.model.ShoppingCart;
 
-@Dao
 public class ShoppingCartDaoImpl implements ShoppingCartDao {
     @Override
     public ShoppingCart create(ShoppingCart shoppingCart) {
@@ -43,7 +41,20 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
     }
 
     @Override
-    public List<Product> getAllProducts(ShoppingCart shoppingCart) {
-        return shoppingCart.getProducts();
+    public List<Product> getAllProducts(Long cartId) {
+        return Storage.carts.stream()
+                .filter(shoppingCart -> shoppingCart.getId().equals(cartId))
+                .findFirst()
+                .get()
+                .getProducts();
+    }
+
+    public boolean deleteProduct(ShoppingCart shoppingCart, Product product) {
+        return Storage.carts.stream()
+                .filter(cart -> cart.getUserId().equals(shoppingCart.getUserId()))
+                .findFirst()
+                .get()
+                .getProducts()
+                .remove(product);
     }
 }

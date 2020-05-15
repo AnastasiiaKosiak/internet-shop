@@ -7,7 +7,7 @@ public class ShoppingCart {
     private List<Product> products;
     private Long userId;
 
-    public ShoppingCart(List<Product> products, Long userId) {
+    public ShoppingCart(Long userId) {
         this.products = products;
         this.userId = userId;
     }
@@ -41,7 +41,7 @@ public class ShoppingCart {
         return "ShoppingCart{"
                 + "id=" + id
                 + ", products=" + products
-                + ", user id=" + userId
+                + ", user ID=" + userId
                 + '}';
     }
 }
