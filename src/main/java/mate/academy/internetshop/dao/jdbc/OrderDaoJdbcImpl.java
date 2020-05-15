@@ -45,7 +45,7 @@ public class OrderDaoJdbcImpl implements OrderDao {
             ResultSet resultSet = statement.executeQuery();
             Optional<Order> order = Optional.empty();
             while (resultSet.next()) {
-                order = getOrderFromResultSet(resultSet);
+                order = Optional.of(getOrderFromResultSet(resultSet));
             }
             return order;
         } catch (SQLException exception) {
@@ -61,7 +61,7 @@ public class OrderDaoJdbcImpl implements OrderDao {
             ResultSet resultSet = statement.executeQuery();
             List<Order> orders = new ArrayList<>();
             while (resultSet.next()) {
-                orders.add(getOrderFromResultSet(resultSet).get());
+                orders.add(getOrderFromResultSet(resultSet));
             }
             return orders;
         } catch (SQLException exception) {
@@ -99,7 +99,7 @@ public class OrderDaoJdbcImpl implements OrderDao {
             ResultSet resultSet = statement.executeQuery();
             List<Order> orders = new ArrayList<>();
             while (resultSet.next()) {
-                orders.add(getOrderFromResultSet(resultSet).get());
+                orders.add(getOrderFromResultSet(resultSet));
             }
             return orders;
         } catch (SQLException exception) {
@@ -154,10 +154,10 @@ public class OrderDaoJdbcImpl implements OrderDao {
         }
     }
 
-    private Optional<Order> getOrderFromResultSet(ResultSet resultSet) throws SQLException {
+    private Order getOrderFromResultSet(ResultSet resultSet) throws SQLException {
         Order order = new Order(getProductsFromOrder(resultSet.getLong("order_id")),
                 resultSet.getLong("user_id"));
         order.setId(resultSet.getLong("order_id"));
-        return Optional.of(order);
+        return order;
     }
 }

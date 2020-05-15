@@ -21,17 +21,14 @@ import mate.academy.internetshop.util.ConnectionUtil;
 public class UserDaoJdbcImpl implements UserDao {
     @Override
     public Optional<User> findByLogin(String login) {
-        String selectQuery = "SELECT * FROM users "
-                + "JOIN users_roles ON users.user_id = users_roles.user_id "
-                + "JOIN roles ON users_roles.role_id = roles.role_id "
-                + "WHERE users.login = ?";
+        String selectQuery = "SELECT * FROM users WHERE login = ?";
         try (Connection connection = ConnectionUtil.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(selectQuery);
             statement.setString(1, login);
             ResultSet resultSet = statement.executeQuery();
             Optional<User> user = Optional.empty();
             while (resultSet.next()) {
-                user = getUserFromResultSet(resultSet);
+                user = Optional.of(getUserFromResultSet(resultSet));
             }
             return user;
         } catch (SQLException exception) {
@@ -63,17 +60,14 @@ public class UserDaoJdbcImpl implements UserDao {
 
     @Override
     public Optional<User> get(Long id) {
-        String selectQuery = "SELECT * FROM users "
-                + "JOIN users_roles ON users.user_id = users_roles.user_id "
-                + "JOIN roles ON users_roles.role_id = roles.role_id "
-                + "WHERE users.user_id = ?";
+        String selectQuery = "SELECT * FROM users WHERE user_id = ?";
         try (Connection connection = ConnectionUtil.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(selectQuery);
             statement.setLong(1, id);
             ResultSet resultSet = statement.executeQuery();
             Optional<User> user = Optional.empty();
             while (resultSet.next()) {
-                user = getUserFromResultSet(resultSet);
+                user = Optional.of(getUserFromResultSet(resultSet));
             }
             return user;
         } catch (SQLException exception) {
@@ -83,16 +77,13 @@ public class UserDaoJdbcImpl implements UserDao {
 
     @Override
     public List<User> getAll() {
-        String selectQuery = "SELECT * FROM users "
-                + "JOIN users_roles ON users.user_id = users_roles.user_id "
-                + "JOIN roles ON users_roles.role_id = roles.role_id "
-                + "WHERE users.user_id = ?";
+        String selectQuery = "SELECT * FROM users";
         try (Connection connection = ConnectionUtil.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(selectQuery);
             ResultSet resultSet = statement.executeQuery();
             List<User> users = new ArrayList<>();
             while (resultSet.next()) {
-                users.add(getUserFromResultSet(resultSet).get());
+                users.add(getUserFromResultSet(resultSet));
             }
             return users;
         } catch (SQLException exception) {
@@ -188,12 +179,12 @@ public class UserDaoJdbcImpl implements UserDao {
         }
     }
 
-    private Optional<User> getUserFromResultSet(ResultSet resultSet) throws SQLException {
+    private User getUserFromResultSet(ResultSet resultSet) throws SQLException {
         User user = new User(resultSet.getString("name"),
                 resultSet.getString("login"),
                 resultSet.getString("password"));
         user.setUserId(resultSet.getLong("user_id"));
         user.setRoles(getUserRoles(user));
-        return Optional.of(user);
+        return user;
     }
 }

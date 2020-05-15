@@ -44,7 +44,7 @@ public class ProductDaoJdbcImpl implements ProductDao {
             ResultSet resultSet = statement.executeQuery();
             Optional<Product> product = Optional.empty();
             while (resultSet.next()) {
-                product = getProductFromResultSet(resultSet);
+                product = Optional.of(getProductFromResultSet(resultSet));
             }
             return product;
         } catch (SQLException exception) {
@@ -60,7 +60,7 @@ public class ProductDaoJdbcImpl implements ProductDao {
             ResultSet resultSet = statement.executeQuery();
             List<Product> products = new ArrayList<>();
             while (resultSet.next()) {
-                products.add(getProductFromResultSet(resultSet).get());
+                products.add(getProductFromResultSet(resultSet));
             }
             return products;
         } catch (SQLException exception) {
@@ -101,10 +101,10 @@ public class ProductDaoJdbcImpl implements ProductDao {
         }
     }
 
-    private Optional<Product> getProductFromResultSet(ResultSet resultSet) throws SQLException {
+    private Product getProductFromResultSet(ResultSet resultSet) throws SQLException {
         Product product = new Product(resultSet.getString("name"),
                 resultSet.getBigDecimal("price"));
         product.setId(resultSet.getLong("id"));
-        return Optional.of(product);
+        return product;
     }
 }

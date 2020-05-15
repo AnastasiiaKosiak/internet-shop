@@ -52,6 +52,7 @@ public class ShoppingCartDaoJdbcImpl implements ShoppingCartDao {
             while (resultSet.next()) {
                 element.setId(resultSet.getLong(1));
             }
+            addProductsToCart(element);
             return element;
         } catch (SQLException exception) {
             throw new DataProcessingException(exception.getMessage(), exception);
@@ -67,7 +68,7 @@ public class ShoppingCartDaoJdbcImpl implements ShoppingCartDao {
             ResultSet resultSet = statement.executeQuery();
             Optional<ShoppingCart> shoppingCart = Optional.empty();
             while (resultSet.next()) {
-                shoppingCart = getShoppingCartFromResultSet(resultSet);
+                shoppingCart = Optional.of(getShoppingCartFromResultSet(resultSet));
             }
             return shoppingCart;
         } catch (SQLException e) {
@@ -83,7 +84,7 @@ public class ShoppingCartDaoJdbcImpl implements ShoppingCartDao {
             ResultSet resultSet = statement.executeQuery();
             List<ShoppingCart> shoppingCarts = new ArrayList<>();
             while (resultSet.next()) {
-                shoppingCarts.add(getShoppingCartFromResultSet(resultSet).get());
+                shoppingCarts.add(getShoppingCartFromResultSet(resultSet));
             }
             return shoppingCarts;
         } catch (SQLException e) {
@@ -143,11 +144,11 @@ public class ShoppingCartDaoJdbcImpl implements ShoppingCartDao {
         }
     }
 
-    private Optional<ShoppingCart> getShoppingCartFromResultSet(ResultSet resultSet)
+    private ShoppingCart getShoppingCartFromResultSet(ResultSet resultSet)
             throws SQLException {
         ShoppingCart shoppingCart = new ShoppingCart(resultSet.getLong("user_id"));
         shoppingCart.setProducts(getAllProducts(resultSet.getLong("id")));
         shoppingCart.setId(resultSet.getLong("cart_id"));
-        return Optional.of(shoppingCart);
+        return shoppingCart;
     }
 }
