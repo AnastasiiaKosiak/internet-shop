@@ -1,15 +1,17 @@
-package mate.academy.internetshop.service.impl;
+package mate.academy.internetshop.service.jdbc;
 
 import java.util.List;
 import java.util.Optional;
 import mate.academy.internetshop.dao.OrderDao;
 import mate.academy.internetshop.lib.Inject;
+import mate.academy.internetshop.lib.Service;
 import mate.academy.internetshop.model.Order;
 import mate.academy.internetshop.model.Product;
 import mate.academy.internetshop.model.User;
 import mate.academy.internetshop.service.OrderService;
 
-public class OrderServiceImpl implements OrderService {
+@Service
+public class OrderServiceJdbcImpl implements OrderService {
     @Inject
     private OrderDao orderDao;
 

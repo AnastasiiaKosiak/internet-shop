@@ -1,4 +1,4 @@
-package mate.academy.internetshop.service.impl;
+package mate.academy.internetshop.service.jdbc;
 
 import java.util.List;
 import java.util.Optional;
