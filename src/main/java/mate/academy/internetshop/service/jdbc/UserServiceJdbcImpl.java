@@ -10,15 +10,14 @@ import mate.academy.internetshop.model.ShoppingCart;
 import mate.academy.internetshop.model.User;
 import mate.academy.internetshop.service.ShoppingCartService;
 import mate.academy.internetshop.service.UserService;
+import mate.academy.internetshop.util.HashUtil;
 
 @Service
 public class UserServiceJdbcImpl implements UserService {
     @Inject
     private UserDao userDao;
-
     @Inject
     private ShoppingCartDao shoppingCartDao;
-
     @Inject
     private ShoppingCartService shoppingCartService;
 
@@ -28,8 +27,10 @@ public class UserServiceJdbcImpl implements UserService {
     }
 
     @Override
-    public User create(User element) {
-        return userDao.create(element);
+    public User create(User user) {
+        user.setSalt(HashUtil.getSalt());
+        user.setPassword(HashUtil.hashPassword(user.getPassword(), user.getSalt()));
+        return userDao.create(user);
     }
 
     @Override
@@ -43,8 +44,8 @@ public class UserServiceJdbcImpl implements UserService {
     }
 
     @Override
-    public User update(User element) {
-        return userDao.update(element);
+    public User update(User user) {
+        return userDao.update(user);
     }
 
     @Override

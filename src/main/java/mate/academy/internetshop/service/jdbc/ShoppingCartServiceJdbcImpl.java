@@ -51,8 +51,8 @@ public class ShoppingCartServiceJdbcImpl implements ShoppingCartService {
     }
 
     @Override
-    public ShoppingCart create(ShoppingCart element) {
-        return shoppingCartDao.create(element);
+    public ShoppingCart create(ShoppingCart shoppingCart) {
+        return shoppingCartDao.create(shoppingCart);
     }
 
     @Override
@@ -66,8 +66,8 @@ public class ShoppingCartServiceJdbcImpl implements ShoppingCartService {
     }
 
     @Override
-    public ShoppingCart update(ShoppingCart element) {
-        return shoppingCartDao.update(element);
+    public ShoppingCart update(ShoppingCart shoppingCart) {
+        return shoppingCartDao.update(shoppingCart);
     }
 
     @Override
