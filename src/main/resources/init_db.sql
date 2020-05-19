@@ -65,3 +65,6 @@ CREATE TABLE `users_roles` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO roles (role_id, role_name) VALUES (1, 'ADMIN'), (2, 'USER');
+
+ALTER TABLE `internet_shop`.`users`
+ADD COLUMN `salt` VARBINARY(256) NOT NULL AFTER `password`;
