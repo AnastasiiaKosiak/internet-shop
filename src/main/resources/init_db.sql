@@ -11,6 +11,7 @@ CREATE TABLE `internet_shop`.`users` (
     `name` VARCHAR(225) NOT NULL,
     `login` VARCHAR(225) NOT NULL,
     `password` VARCHAR(225) NOT NULL,
+    `salt` VARBINARY(256) NOT NULL,
     PRIMARY KEY (`user_id`),
     UNIQUE INDEX `login_UNIQUE` (`login` ASC) VISIBLE);
 
@@ -65,6 +66,3 @@ CREATE TABLE `users_roles` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO roles (role_id, role_name) VALUES (1, 'ADMIN'), (2, 'USER');
-
-ALTER TABLE `internet_shop`.`users`
-ADD COLUMN `salt` VARBINARY(256) NOT NULL AFTER `password`;

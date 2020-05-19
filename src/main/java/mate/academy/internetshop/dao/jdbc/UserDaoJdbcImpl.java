@@ -95,15 +95,14 @@ public class UserDaoJdbcImpl implements UserDao {
 
     @Override
     public User update(User element) {
-        String updateQuery = "UPDATE users SET name = ?, login = ?, password = ?, salt = ? "
+        String updateQuery = "UPDATE users SET name = ?, login = ?, password = ? "
                 + "WHERE user_id = ?";
         try (Connection connection = ConnectionUtil.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(updateQuery);
             statement.setString(1, element.getName());
             statement.setString(2, element.getLogin());
             statement.setString(3, element.getPassword());
-            statement.setBytes(4, element.getSalt());
-            statement.setLong(5, element.getUserId());
+            statement.setLong(4, element.getUserId());
             statement.executeUpdate();
             removeUserRoles(element, connection);
             addUserRoles(element, connection);
