@@ -1,13 +1,14 @@
 package mate.academy.internetshop.service.impl;
 
 import java.util.List;
-import java.util.Optional;
 import mate.academy.internetshop.dao.ShoppingCartDao;
 import mate.academy.internetshop.lib.Inject;
+import mate.academy.internetshop.lib.Service;
 import mate.academy.internetshop.model.Product;
 import mate.academy.internetshop.model.ShoppingCart;
 import mate.academy.internetshop.service.ShoppingCartService;
 
+@Service
 public class ShoppingCartServiceImpl implements ShoppingCartService {
     @Inject
     private ShoppingCartDao shoppingCartDao;
@@ -15,51 +16,30 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     @Override
     public ShoppingCart addProduct(ShoppingCart shoppingCart, Product product) {
         shoppingCart.getProducts().add(product);
-        return shoppingCart;
+        return shoppingCartDao.update(shoppingCart);
     }
 
     @Override
     public boolean deleteProduct(ShoppingCart shoppingCart, Product product) {
-        return shoppingCartDao.get(shoppingCart.getId()).get().getProducts().remove(product);
+        boolean isDeleted = shoppingCart.getProducts()
+                .removeIf(prod -> prod.getId().equals(product.getId()));
+        shoppingCartDao.update(shoppingCart);
+        return isDeleted;
     }
 
     @Override
     public void clear(ShoppingCart shoppingCart) {
-        shoppingCartDao.getAll().clear();
+        shoppingCart.getProducts().clear();
+        shoppingCartDao.update(shoppingCart);
     }
 
     @Override
-    public ShoppingCart getCartByUserId(Long id) {
-        return shoppingCartDao.getAll()
-                .stream()
-                .filter(cart -> cart.getUserId().equals(id))
+    public ShoppingCart getByUserId(Long userId) {
+        return shoppingCartDao.getAll().stream()
+                .filter(shoppingCart -> shoppingCart.getUserId().equals(userId))
                 .findFirst()
-                .get();
-    }
-
-    @Override
-    public ShoppingCart create(ShoppingCart element) {
-        return shoppingCartDao.create(element);
-    }
-
-    @Override
-    public Optional<ShoppingCart> get(Long userId) {
-        return shoppingCartDao.get(userId);
-    }
-
-    @Override
-    public List<ShoppingCart> getAll() {
-        return shoppingCartDao.getAll();
-    }
-
-    @Override
-    public ShoppingCart update(ShoppingCart element) {
-        return shoppingCartDao.update(element);
-    }
-
-    @Override
-    public boolean delete(Long id) {
-        return shoppingCartDao.delete(id);
+                .orElseGet(() -> shoppingCartDao
+                        .create(new ShoppingCart(userId)));
     }
 
     @Override

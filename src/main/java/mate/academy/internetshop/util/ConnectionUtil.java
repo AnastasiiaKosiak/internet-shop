@@ -9,8 +9,8 @@ public class ConnectionUtil {
     static {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException("MySQL Driver not found", e);
+        } catch (ClassNotFoundException exception) {
+            throw new RuntimeException("MySQL Driver not found", exception);
         }
     }
 
@@ -21,8 +21,8 @@ public class ConnectionUtil {
         String url = "jdbc:mysql://localhost:3306/internet_shop?serverTimezone=UTC";
         try {
             return DriverManager.getConnection(url, dbProperties);
-        } catch (SQLException e) {
-            throw new RuntimeException("Can't establish connection to the DB", e);
+        } catch (SQLException exception) {
+            throw new RuntimeException("Can't establish connection to the DB", exception);
         }
     }
 }

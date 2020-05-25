@@ -26,11 +26,10 @@ public class UserDaoJdbcImpl implements UserDao {
             PreparedStatement statement = connection.prepareStatement(selectQuery);
             statement.setString(1, login);
             ResultSet resultSet = statement.executeQuery();
-            Optional<User> user = Optional.empty();
-            while (resultSet.next()) {
-                user = Optional.of(getUserFromResultSet(resultSet));
+            if (resultSet.next()) {
+                return Optional.of(getUserFromResultSet(resultSet));
             }
-            return user;
+            return Optional.empty();
         } catch (SQLException exception) {
             throw new DataProcessingException(exception.getMessage(), exception);
         }
@@ -67,11 +66,10 @@ public class UserDaoJdbcImpl implements UserDao {
             PreparedStatement statement = connection.prepareStatement(selectQuery);
             statement.setLong(1, id);
             ResultSet resultSet = statement.executeQuery();
-            Optional<User> user = Optional.empty();
-            while (resultSet.next()) {
-                user = Optional.of(getUserFromResultSet(resultSet));
+            if (resultSet.next()) {
+                return Optional.of(getUserFromResultSet(resultSet));
             }
-            return user;
+            return Optional.empty();
         } catch (SQLException exception) {
             throw new DataProcessingException(exception.getMessage(), exception);
         }
