@@ -17,13 +17,7 @@
         <maven.checkstyle.plugin.configLocation>
             https://raw.githubusercontent.com/mate-academy/style-guides/master/java/checkstyle.xml
         </maven.checkstyle.plugin.configLocation>
-
-        <sonar.projectKey>AnastasiiaKosiak_internet-shop-project</sonar.projectKey>
-        <sonar.organization>anastasiiakosiak</sonar.organization>
-        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
-        <sonar.login>7eafd285e42c3d9fc1791a843d14ac30d31505a3</sonar.login>
     </properties>
-
     <dependencies>
         <dependency>
             <groupId>log4j</groupId>
