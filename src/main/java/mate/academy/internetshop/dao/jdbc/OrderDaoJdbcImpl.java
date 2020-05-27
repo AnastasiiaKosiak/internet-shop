@@ -43,11 +43,10 @@ public class OrderDaoJdbcImpl implements OrderDao {
             PreparedStatement statement = connection.prepareStatement(selectQuery);
             statement.setLong(1, id);
             ResultSet resultSet = statement.executeQuery();
-            Optional<Order> order = Optional.empty();
-            while (resultSet.next()) {
-                order = Optional.of(getOrderFromResultSet(resultSet));
+            if (resultSet.next()) {
+                return Optional.of(getOrderFromResultSet(resultSet));
             }
-            return order;
+            return Optional.empty();
         } catch (SQLException exception) {
             throw new DataProcessingException(exception.getMessage(), exception);
         }
@@ -112,7 +111,7 @@ public class OrderDaoJdbcImpl implements OrderDao {
         String selectQuery = "SELECT * "
                 + "FROM products JOIN orders_products "
                 + "ON orders_products.product_id = products.id "
-                + "WHERE order_id = ?";
+                + "WHERE orders_products.order_id = ?";
         try (Connection connection = ConnectionUtil.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(selectQuery);
             statement.setLong(1, id);

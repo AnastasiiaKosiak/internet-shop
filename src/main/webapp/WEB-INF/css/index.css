@@ -1,0 +1,103 @@
+.navbar {
+    overflow: hidden;
+    background-color: #c1fab1;
+    font-family: "Comic Sans MS";
+}
+
+.navbar a {
+    float: left;
+    font-size: 20px;
+    color: black;
+    text-align: center;
+    padding: 16px 16px;
+    text-decoration: none;
+}
+
+.dropdownUser {
+    float: left;
+    overflow: hidden;
+}
+
+.dropdownUser.dropdownBtn {
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+}
+
+
+.navbar a:hover, .dropdownUser:hover {
+    background-color: lightgrey;
+}
+
+.dropdownUser-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdownUser-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdownUser-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdownUser:hover .dropdownUser-content {
+    display: block;
+}
+
+.dropdownAdmin {
+    float: left;
+    overflow: hidden;
+}
+
+.dropdownAdmin.dropdownAdminBtn {
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+}
+
+.dropdownAdmin-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdownAdmin-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdownAdmin-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdownAdmin:hover .dropdownAdmin-content {
+    display: block;
+}
