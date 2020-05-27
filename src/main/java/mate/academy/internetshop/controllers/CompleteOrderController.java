@@ -1,6 +1,7 @@
 package mate.academy.internetshop.controllers;
 
 import java.io.IOException;
+import java.util.Optional;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -27,8 +28,10 @@ public class CompleteOrderController extends HttpServlet {
             throws ServletException, IOException {
         Long userId = (Long)req.getSession().getAttribute(USER_ID);
         ShoppingCart shoppingCart = shoppingCartService.getByUserId(userId);
-        User user = userService.get(userId).get();
-        orderService.completeOrder(shoppingCart.getProducts(), user);
+        Optional<User> user = userService.get(userId);
+        if (user.isPresent()) {
+            orderService.completeOrder(shoppingCart.getProducts(), user.get());
+        }
         resp.sendRedirect(req.getContextPath() + "/");
     }
 }
