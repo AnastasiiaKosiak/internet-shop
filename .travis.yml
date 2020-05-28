@@ -1,15 +1,16 @@
 jdk:
   - openjdk11
+install: true
 cache:
   directories:
     - $HOME/.m2
+    - $HOME/.sonar/cache
 
 addons:
   sonarcloud:
     organization: "anastasiiakosiak"
     token:
-      secure: " AqSInAN0j22b3S8rht8dO2K8R6MuBKMhuq1M2e4EO0hY0SEyoxhMCmSv04+Tuy1HagykVsTfYhucs1w+1oS8mP3l5j+gSnOELRDtcb5mWp0uptF8eM7vrwjd9K/zBFR/2YYH8+semgbpMgoBoDP0xFIp126bXqWCp2V+9fz7Cneek5CZKxRyxn7S1fXk2/X6I0NSyRbF/ETRlC1fQLezQpgT3JZ1h+OmY/d7/TS+C+H8PsrRbZmnn1sRUqHmjcLtrIBOxoIN8V+HASvCBwZTh3xA1MaslIWBWt1s8Eq8kjqdrrn07mRoWzPLLQ+mruHHTylC8OlmaqD2lQjcqqCpZNf5f52jFeiS40BzNkxEAE3gBVgWiQP+Z1xHeIvcaEWklMmYAGhoGgh1kweeag1A9kpqopWEUHh9uuOiwcxbS21OVGSs7y9avaCQjiIqI9kcqJMFylHxAcfRwh/eg5yNMZWK2uJj9PpmB5dVmfFHgNRscKqvl1lupGF0JA//kxYgIFkTaUWeKSS8GDlAUqPiOKmRrNucvuV+qL6wpt8XCyedXTjN5GmxyC37bMk8R9So6hEpfVltPdrtT5bd+18gIJeWTPNx14FtM8aL2ieHKB/hecS63AzdRSiE3pq90gkWjjoEZcUkiOIKwuZI5E3BEbpYdYXCr/mCdxAwBYRJ+CM=" # encrypted value of your token
-
+      secure: "$SONAR_TOKEN"
   script:
     # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
-    - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=AnastasiiaKosiak_internet-shop-project
+   - mvn clean verify sonar:sonar -Pcoverage
