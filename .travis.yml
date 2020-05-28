@@ -1,14 +1,15 @@
 jdk:
   - openjdk11
-script:
-  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=AnastasiiaKosiak_internet-shop-project
-
 cache:
   directories:
     - $HOME/.m2
-
 addons:
   sonarcloud:
     organization: "anastasiiakosiak"
-      token:
-        secure: "xzcE4TvJgU2PiTcUMAmzCBzwLVEJH8JluVEXlMoG92ft7V1z9FOaZeGB+cXnVtpZUb/I56sUNOImWSfIan5hCnVrKuUiGkLbv7siTJ+B3A1sEZP2hbnEv9WGZfShQj/VSAcnBS30k2sVhXM3VpkX4+X6a/3gc4DrW/gRQ8zZ97TFpS3y8h2e1+ttltrqo3LfVwVmOcd9WvMJeXYrIrJoF3ru8+NkWk4sYC4ExAm3pA6JU4yyrsLlT4RU3xC/UEymlhg84Zyn4o75nTf0GwzPpJltx4tsyUTSK0ctiZmXRq5j/Hj1tu0Z+psWo2q8fgazC26azhS+nOunol40yglX16n77Jp9gFrSfWzBoK+UvlYobW8FN+GXu2MY+8Wd4BtYsczQqgVZa1bq3POiqaYKlfL52C1e2Dy2DeXBeExkGkxP6+5OuW+Atv298oXkDdlDQ4hXUZ56HgRo80ZDOxxxO2aISQC+RngExrmoB0PQo/TizS+Pjlje1vWqGnJZc4/br3A4TbuWrEU0boUZCUpiT5sGo21sfcw77XNOtGa/X3mnqhGPCBZLbAOBmx1YoVJgEaetTckY5hxut1LMXOMiD/z6Tkra9AWsNhgVhBZptRdl3RTefjx/xeZF80xJzLqIWCvU/GEpS5obxC8B4Wi28clA9iAn+VCuF4Q72VLrBOk="
+    token:
+      secure: "C3Gpq4t9JtRcd/BxxgO1Fxc4awb1hoJyTxyzra8PPZPU0Q6PyABP7LNIUAKr7HsHpSlrOYi/AxZc3C93mlmqY4k0zbE2p17bdcpcmLF069hqqCrZHGfufAn6JxrXxN2Hoac/GWy9TRI1ZcB3Rb0hRGLIEJczd5J9P2v90Bnu+iRpbXVtBzxSElYDwolW6lCgy+8qsUmttPCTr2oJ92y9lFoOIhEaLg9bC+MWsJ5mDP/KhFFqSvEFbjy34mHuCa5vJhCmhbXuox+8ZRRL5soSjPev1xcYcjZmDKQfDWnF4Z6lqSWoa+QAOoH0ijQ7NsC3sr30lP9RweY6P8L8Fvz0ZwHmcYmQes1ohFbJn7YyuN+Oa9fur6DZiwVZhx1DW7sMCSQ6j5qMUs1pQ95PZkkVEmgpZvqSDc06c/NNxznJ66cLyUdDJzkOLfmV5jdVXGay5uTufeWfDn07+ef2KVpRDi299N3GPvtskLqB8dfVRcc4zw4TiKj5KoCItIw+YZVcYolfdbuXq4W+BZXUtYpLgRFmClXbFUoJszz1pkz4kA6HS/Ka3zW6Ws2FW5LypSJYpuGLzPvQYVpq+uBoguRL61eVb7SCZt/K79A3OtDBeM/LIANux4BS0XmiJ96c6es37sl76BOT2ji9DmDUGVLTFkwoytZXOQrMT+vMAVSOcao="
+      # encrypted value of your token
+
+script:
+  # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
+  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=AnastasiiaKosiak_internet-shop-project
