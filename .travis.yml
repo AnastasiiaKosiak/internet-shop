@@ -1,3 +1,4 @@
+language: java
 jdk:
   - openjdk11
 cache:
@@ -7,7 +8,7 @@ addons:
   sonarcloud:
     organization: "anastasiiakosiak"
     token:
-      secure: "C3Gpq4t9JtRcd/BxxgO1Fxc4awb1hoJyTxyzra8PPZPU0Q6PyABP7LNIUAKr7HsHpSlrOYi/AxZc3C93mlmqY4k0zbE2p17bdcpcmLF069hqqCrZHGfufAn6JxrXxN2Hoac/GWy9TRI1ZcB3Rb0hRGLIEJczd5J9P2v90Bnu+iRpbXVtBzxSElYDwolW6lCgy+8qsUmttPCTr2oJ92y9lFoOIhEaLg9bC+MWsJ5mDP/KhFFqSvEFbjy34mHuCa5vJhCmhbXuox+8ZRRL5soSjPev1xcYcjZmDKQfDWnF4Z6lqSWoa+QAOoH0ijQ7NsC3sr30lP9RweY6P8L8Fvz0ZwHmcYmQes1ohFbJn7YyuN+Oa9fur6DZiwVZhx1DW7sMCSQ6j5qMUs1pQ95PZkkVEmgpZvqSDc06c/NNxznJ66cLyUdDJzkOLfmV5jdVXGay5uTufeWfDn07+ef2KVpRDi299N3GPvtskLqB8dfVRcc4zw4TiKj5KoCItIw+YZVcYolfdbuXq4W+BZXUtYpLgRFmClXbFUoJszz1pkz4kA6HS/Ka3zW6Ws2FW5LypSJYpuGLzPvQYVpq+uBoguRL61eVb7SCZt/K79A3OtDBeM/LIANux4BS0XmiJ96c6es37sl76BOT2ji9DmDUGVLTFkwoytZXOQrMT+vMAVSOcao="
+      secure: "$SONAR_TOKEN"
       # encrypted value of your token
 
 script:
