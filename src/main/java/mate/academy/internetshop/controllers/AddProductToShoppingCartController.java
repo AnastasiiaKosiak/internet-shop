@@ -1,11 +1,10 @@
 package mate.academy.internetshop.controllers;
 
 import java.io.IOException;
-import java.util.Optional;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import mate.academy.internetshop.exceptions.DataProcessingException;
 import mate.academy.internetshop.lib.Injector;
 import mate.academy.internetshop.model.Product;
 import mate.academy.internetshop.model.ShoppingCart;
@@ -22,17 +21,11 @@ public class AddProductToShoppingCartController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-            throws IOException {
+            throws ServletException, IOException {
         String productId = req.getParameter("id");
         Long userId = (Long)req.getSession().getAttribute(USER_ID);
         ShoppingCart cart = shoppingCartService.getCartByUserId(userId);
-        Optional<Product> product;
-        try {
-            product = productService.get(Long.valueOf(productId));
-        } catch (NumberFormatException exception) {
-            throw new DataProcessingException(exception.getMessage(), exception);
-        }
-        product.ifPresent(value -> shoppingCartService.addProduct(cart, value));
+        shoppingCartService.addProduct(cart, productService.get(Long.valueOf(productId)).get());
         resp.sendRedirect(req.getContextPath() + "/");
     }
 }
