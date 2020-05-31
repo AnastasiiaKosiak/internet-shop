@@ -78,8 +78,8 @@ public class OrderDaoJdbcImpl implements OrderDao {
     @Override
     public boolean delete(Long id) {
         String deleteQuery = "DELETE FROM orders WHERE order_id = ?";
+        deleteProductsFromOrder(id);
         try (Connection connection = ConnectionUtil.getConnection()) {
-            deleteProductsFromOrder(id);
             PreparedStatement statement = connection.prepareStatement(deleteQuery);
             statement.setLong(1, id);
             statement.executeUpdate();
@@ -109,9 +109,9 @@ public class OrderDaoJdbcImpl implements OrderDao {
 
     private List<Product> getProductsFromOrder(Long id) throws SQLException {
         String selectQuery = "SELECT * "
-                + "FROM products JOIN orders_products "
-                + "ON orders_products.product_id = products.id "
-                + "WHERE orders_products.order_id = ?";
+                + "FROM products p JOIN orders_products op"
+                + "ON op.product_id = p.id "
+                + "WHERE op.order_id = ?";
         try (Connection connection = ConnectionUtil.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(selectQuery);
             statement.setLong(1, id);
@@ -131,8 +131,8 @@ public class OrderDaoJdbcImpl implements OrderDao {
         String insertQuery = "INSERT INTO orders_products (order_id, product_id)"
                 + " VALUES (?, ?)";
         try (Connection connection = ConnectionUtil.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement(insertQuery);
             for (Product product : order.getProducts()) {
-                PreparedStatement statement = connection.prepareStatement(insertQuery);
                 statement.setLong(1, order.getId());
                 statement.setLong(2, product.getId());
                 statement.executeUpdate();

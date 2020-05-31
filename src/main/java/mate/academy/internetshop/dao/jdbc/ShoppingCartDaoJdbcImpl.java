@@ -20,8 +20,8 @@ public class ShoppingCartDaoJdbcImpl implements ShoppingCartDao {
     @Override
     public List<Product> getAllProducts(Long cartId) {
         String selectQuery = "SELECT * "
-                + "FROM products JOIN shopping_carts_products "
-                + "ON products.id = shopping_carts_products.product_id "
+                + "FROM products p JOIN shopping_carts_products shp"
+                + "ON p.id = shp.product_id "
                 + "WHERE cart_id = ?";
         try (Connection connection = ConnectionUtil.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(selectQuery);

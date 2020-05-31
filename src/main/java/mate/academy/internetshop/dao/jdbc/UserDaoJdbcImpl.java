@@ -128,8 +128,8 @@ public class UserDaoJdbcImpl implements UserDao {
     }
 
     private Set<Role> getUserRoles(User user) {
-        String selectQuery = "SELECT role_name FROM roles JOIN users_roles "
-                + "ON users_roles.role_id = roles.role_id "
+        String selectQuery = "SELECT role_name FROM roles r JOIN users_roles ur"
+                + "ON ur.role_id = r.role_id "
                 + "WHERE user_id = ?";
         try (Connection connection = ConnectionUtil.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(selectQuery);
