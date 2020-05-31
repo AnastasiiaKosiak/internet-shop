@@ -17,19 +17,19 @@ import mate.academy.internetshop.util.ConnectionUtil;
 @Dao
 public class ProductDaoJdbcImpl implements ProductDao {
     @Override
-    public Product create(Product element) {
+    public Product create(Product product) {
         String insertionQuery = "INSERT INTO products (name, price) VALUES (?, ?)";
         try (Connection connection = ConnectionUtil.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(insertionQuery,
                     Statement.RETURN_GENERATED_KEYS);
-            statement.setString(1, element.getName());
-            statement.setBigDecimal(2, element.getPrice());
+            statement.setString(1, product.getName());
+            statement.setBigDecimal(2, product.getPrice());
             statement.executeUpdate();
             ResultSet resultSet = statement.getGeneratedKeys();
             while (resultSet.next()) {
-                element.setId(resultSet.getLong(1));
+                product.setId(resultSet.getLong(1));
             }
-            return element;
+            return product;
         } catch (SQLException exception) {
             throw new DataProcessingException(exception.getMessage(), exception);
         }
@@ -42,11 +42,10 @@ public class ProductDaoJdbcImpl implements ProductDao {
             PreparedStatement statement = connection.prepareStatement(selectQuery);
             statement.setLong(1, id);
             ResultSet resultSet = statement.executeQuery();
-            Optional<Product> product = Optional.empty();
-            while (resultSet.next()) {
-                product = Optional.of(getProductFromResultSet(resultSet));
+            if (resultSet.next()) {
+                return Optional.of(getProductFromResultSet(resultSet));
             }
-            return product;
+            return Optional.empty();
         } catch (SQLException exception) {
             throw new DataProcessingException(exception.getMessage(), exception);
         }
