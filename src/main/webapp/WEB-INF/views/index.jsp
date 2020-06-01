@@ -1,36 +1,36 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<style><%@include file="/WEB-INF/css/index.css"%></style>
 <html>
 <head>
     <title>Index</title>
-    <link rel="stylesheet"
-          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-          crossorigin="anonymous">
 </head>
-<div class="container">
-<h1>Internet shop</h1>
-    <p> <a class="btn btn-outline-success" href="${pageContext.request.contextPath}/injectData"
-          role="button">Inject data</a> </p>
-    <p> <a class="btn btn-outline-success"
-          href="${pageContext.request.contextPath}/registration" role="button">Register</a> </p>
-    <p> <a class="btn btn-outline-success" href="${pageContext.request.contextPath}/login"
-        role="button">Login</a> </p>
-    <p> <a class="btn btn-outline-success" href="${pageContext.request.contextPath}/users/all"
-           role="button">All registered users</a> </p>
-    <p> <a class="btn btn-outline-success" href="${pageContext.request.contextPath}/products/add"
-           role="button">Add a product</a> </p>
-    <p> <a class="btn btn-outline-success" href="${pageContext.request.contextPath}/products/all"
-        role="button">See all products (for users) </a> </p>
-    <p> <a class="btn btn-outline-success" href="${pageContext.request.contextPath}/products/admin"
-        role="button">See all products (for admin)</a> </p>
-    <p> <a class="btn btn-outline-success" href="${pageContext.request.contextPath}/cart/all"
-           role="button">See all products in a cart</a> </p>
-    <p> <a class="btn btn-outline-success" href="${pageContext.request.contextPath}/order/all"
-           role="button">See user orders</a> </p>
-    <p> <a class="btn btn-outline-success" href="${pageContext.request.contextPath}/order/admin"
-           role="button">See all orders (for admin)</a> </p>
-    <p> <a class="btn btn-outline-success" href="${pageContext.request.contextPath}/logout"
-           role="button">Logout</a> </p>
+<body>
+<div class="navbar">
+    <a href="${pageContext.request.contextPath}/inject">Inject test data</a>
+    <a href="${pageContext.request.contextPath}/registration">Register</a>
+    <a href="${pageContext.request.contextPath}/login">Login</a>
+    <a href="${pageContext.request.contextPath}/logout">Logout</a>
+    <div class="dropdownUser">
+        <a class="dropdownBtn">For Users
+            <i class="fa fa-caret-down"></i>
+        </a>
+        <div class="dropdownUser-content">
+            <a href="${pageContext.request.contextPath}/products/all">See all products</a>
+            <a href="${pageContext.request.contextPath}/cart/all">See all products in a cart</a>
+            <a href="${pageContext.request.contextPath}/order/all">See user orders</a>
+        </div>
+    </div>
+    <div class="dropdownAdmin">
+        <a class="dropdownAdminBtn">For Administrators
+            <i class="fa fa-caret-down"></i>
+        </a>
+        <div class="dropdownAdmin-content">
+            <a href="${pageContext.request.contextPath}/users/all">All registered users</a>
+            <a href="${pageContext.request.contextPath}/products/add">Add products</a>
+            <a href="${pageContext.request.contextPath}/products/admin">Products stock</a>
+            <a href="${pageContext.request.contextPath}/order/admin">History of orders</a>
+        </div>
+    </div>
 </div>
 </body>
 </html>

@@ -72,8 +72,6 @@ public class User {
                 + '\''
                 + ", login='" + login
                 + '\''
-                + ", password='" + password
-                + '\''
                 + '}';
     }
 }

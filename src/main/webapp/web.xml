@@ -50,7 +50,7 @@
 
     <servlet-mapping>
         <servlet-name>injectData</servlet-name>
-        <url-pattern>/injectData</url-pattern>
+        <url-pattern>/inject</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>addProduct</servlet-name>
@@ -219,5 +219,4 @@
         <servlet-name>getOrdersForAdmin</servlet-name>
         <url-pattern>/order/admin</url-pattern>
     </servlet-mapping>
-
 </web-app>

@@ -58,14 +58,13 @@ public class AuthorizationFilter implements Filter {
         if (isAuthorized(user, protectedUrls.get(requestedUrl))) {
             filterChain.doFilter(req, resp);
         } else {
-            LOGGER.info("Access to the URL was denied for user with ID=" + userId);
+            LOGGER.info("Access to the URL was denied for the user with ID=" + userId);
             req.getRequestDispatcher("/WEB-INF/views/accessDenied.jsp").forward(req, resp);
         }
     }
 
     @Override
     public void destroy() {
-
     }
 
     private boolean isAuthorized(User user, Set<Role.RoleName> authorizedRoles) {
